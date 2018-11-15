@@ -7,7 +7,7 @@ bug fixes.
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/bitcoin/bitcoin/issues
+  https://github.com/bitcoinevolutions/bitcoin/issues
 
 How to Upgrade
 --------------
