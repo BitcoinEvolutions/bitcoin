@@ -9,10 +9,28 @@
 #include <tinyformat.h>
 #include <utilstrencodings.h>
 #include <crypto/common.h>
+#include "versionbits.h"
+
+extern "C" void yescrypt_hash(const char *input, char *output);
 
 uint256 CBlockHeader::GetHash() const
 {
     return SerializeHash(*this);
+}
+
+uint256 CBlockHeader::GetPoWYHash() const
+{
+    uint256 thash;
+    yescrypt_hash(BEGIN(nVersion), BEGIN(thash));
+    return thash;
+}
+
+uint256 CBlockHeader::GetPoWHash() const
+{
+	if (nVersion & VERSIONBITS_FORK_CPU)
+		return GetPoWYHash();
+	else
+		return GetHash();
 }
 
 std::string CBlock::ToString() const
