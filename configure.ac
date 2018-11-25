@@ -13,7 +13,6 @@ AC_CONFIG_SRCDIR([src/validation.cpp])
 AC_CONFIG_HEADERS([src/config/bitcoin-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
-AM_PROG_AS
 
 BITCOIN_DAEMON_NAME=bitcoind
 BITCOIN_GUI_NAME=bitcoin-qt
@@ -187,7 +186,7 @@ AC_ARG_ENABLE([asm],
   [AS_HELP_STRING([--enable-asm],
   [Enable assembly routines (default is yes)])],
   [use_asm=$enableval],
-  [use_asm=no])
+  [use_asm=yes])
 
 if test "x$use_asm" = xyes; then
   AC_DEFINE(USE_ASM, 1, [Define this symbol to build in assembly routines])
